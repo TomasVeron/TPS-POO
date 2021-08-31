@@ -2,7 +2,7 @@ package TP1.eje1;
 
 import java.util.List;
 
-public class Remito{
+public class Remito {
 
     private List<Articulo> articulosPedido;
 

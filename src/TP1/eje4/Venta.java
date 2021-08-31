@@ -50,5 +50,6 @@ public class Venta {
         venta2.pagar();
 
 
+
     }
 }

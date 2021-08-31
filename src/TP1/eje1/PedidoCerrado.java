@@ -1,9 +1,8 @@
 package TP1.eje1;
 
-import java.util.Date;
 import java.util.List;
 
-public class PedidoCerrado extends EstadoPedido{
+public class PedidoCerrado extends EstadoPedido {
 
     public PedidoCerrado(Pedido pedido) {
         super(pedido);
@@ -20,8 +19,20 @@ public class PedidoCerrado extends EstadoPedido{
         remitos.add(remito);
     }
 
-    public void reabrirPedido(){
+    @Override
+    public void cerrarPedido() throws Exception {
+        throw new Exception("El pedido ya esta cerrado.");
+    }
+
+    @Override
+    public void entregarPedido() {
+        getPedido().setEstado(new PedidoEntregado(getPedido()));
+    }
+
+    @Override
+    public void reAbrirPedido() {
         getPedido().setEstado(new PedidoAbierto(getPedido()));
     }
+
 
 }

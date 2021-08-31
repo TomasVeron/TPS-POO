@@ -1,7 +1,5 @@
 package TP1.eje1;
 
-import java.util.Date;
-import java.util.List;
 
 public abstract class EstadoPedido {
     private Pedido pedido;
@@ -19,6 +17,13 @@ public abstract class EstadoPedido {
     }
 
     public abstract void agregarArticulo(Articulo articulo);
+
     public abstract void agregarRemito(Remito remito);
 
+
+    public abstract void cerrarPedido() throws Exception;
+
+    public abstract void entregarPedido() throws Exception;
+
+    public abstract void reAbrirPedido() throws Exception;
 }
