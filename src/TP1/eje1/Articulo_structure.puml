@@ -1,0 +1,221 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": ""
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false // root node is included
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "TP1.eje1.Articulo"
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_3113937 { 
+   	label=eje1
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Articulo198545174[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Articulo</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   cantidad: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   precioUnitario: double [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+EstadoPedido198545174[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)EstadoPedido</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   pedido: Pedido [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ agregarArticulo(articulo: Articulo)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ agregarRemito(remito: Remito)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cerrarPedido()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ entregarPedido()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reAbrirPedido()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Pedido198545174[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Pedido</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   articulos: List&lt;Articulo&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   cliente: Cliente [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   estado: EstadoPedido [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fechaEntrega: Date [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numero: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   remitos: List&lt;Remito&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ agregarArticulo(articulo: Articulo)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ agregarRemito(remito: Remito)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cerrarPedido()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ entregarPedido()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reAbrirPedido()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PedidoAbierto198545174[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PedidoAbierto</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ agregarArticulo(articulo: Articulo)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ agregarRemito(remito: Remito)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cerrarPedido()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ entregarPedido()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reAbrirPedido()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PedidoCerrado198545174[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PedidoCerrado</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ agregarArticulo(articulo: Articulo)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ agregarRemito(remito: Remito)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cerrarPedido()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ entregarPedido()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reAbrirPedido()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PedidoEntregado198545174[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PedidoEntregado</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ agregarArticulo(articulo: Articulo)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ agregarRemito(remito: Remito)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ cerrarPedido()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ entregarPedido()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ reAbrirPedido()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Remito198545174[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Remito</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   articulosPedido: List&lt;Articulo&gt; [0..*]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+EstadoPedido198545174 -> Pedido198545174[label="pedido
+[0..1]"];
+EstadoPedido198545174 -> PedidoAbierto198545174[arrowhead=none, arrowtail=empty, dir=both];
+EstadoPedido198545174 -> PedidoCerrado198545174[arrowhead=none, arrowtail=empty, dir=both];
+EstadoPedido198545174 -> PedidoEntregado198545174[arrowhead=none, arrowtail=empty, dir=both];
+Pedido198545174 -> Articulo198545174[label="articulos
+[0..*]"];
+Pedido198545174 -> EstadoPedido198545174[label="estado
+[0..1]"];
+Pedido198545174 -> Remito198545174[label="remitos
+[0..*]"];
+Remito198545174 -> Articulo198545174[label="articulosPedido
+[0..*]"];
+    
+}
+@enduml

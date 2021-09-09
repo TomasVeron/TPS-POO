@@ -1,0 +1,171 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": ""
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false // root node is included
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "TP1.eje4.MetodoDePago"
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_3113940 { 
+   	label=eje4
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   MetodoDePago198545171[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(I)MetodoDePago</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ pagar(monto: double)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#F1E5FD"
+];
+
+PagoPorBancoStrategy198545171[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PagoPorBancoStrategy</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   cbuOrigen: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ pagar(monto: double)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PagoPorPaypalStrategy198545171[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PagoPorPaypalStrategy</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   usuario: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ pagar(monto: double)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PagoPorTarjetaStrategy198545171[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PagoPorTarjetaStrategy</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   cvv: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nombreTarjeta: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numero: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ pagar(monto: double)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Venta198545171[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Venta</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   metodoDePago: MetodoDePago [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   monto: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   productos: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pagar()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+MetodoDePago198545171 -> PagoPorBancoStrategy198545171[arrowhead=none, arrowtail=empty, dir=both];
+MetodoDePago198545171 -> PagoPorPaypalStrategy198545171[arrowhead=none, arrowtail=empty, dir=both];
+MetodoDePago198545171 -> PagoPorTarjetaStrategy198545171[arrowhead=none, arrowtail=empty, dir=both];
+Venta198545171 -> MetodoDePago198545171[label="metodoDePago
+[0..1]"];
+    
+}
+@enduml

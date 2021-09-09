@@ -4,17 +4,27 @@ import java.util.ArrayList;
 
 public class BolsaPromocional extends Producto{
     private String descripcion;
+    private float porcentajeDescuento;
     private ArrayList<CajaChocolate> cajaChocolates;
 
-    public BolsaPromocional(String descripcion) {
+    public BolsaPromocional(String descripcion, float porcentajeDescuento) {
+        this.descripcion = descripcion;
+        this.porcentajeDescuento = porcentajeDescuento;
         setCajaChocolates(new ArrayList<>());
-        setDescripcion(descripcion);
     }
 
     public double getPrecio(){
         return  getCajaChocolates().stream()
                 .mapToDouble(CajaChocolate::getPrecio)
-                .sum();
+                .sum()*getPorcentajeDescuento();
+    }
+
+    public float getPorcentajeDescuento() {
+        return porcentajeDescuento;
+    }
+
+    public void setPorcentajeDescuento(float porcentajeDescuento) {
+        this.porcentajeDescuento = porcentajeDescuento;
     }
 
     public String getDescripcion() {

@@ -38,7 +38,7 @@ public class PagoPorTarjetaStrategy implements MetodoDePago{
 
     @Override
     public void pagar(double monto) {
-        System.out.printf("se ha pagado con tarjeta de credito terminada en ***%s \n", getNumero().substring(getNumero().length()-4));
+        Tarjeta.cobrar(getNombreTarjeta(),getNumero(),getCvv(), monto);
     }
 
 }

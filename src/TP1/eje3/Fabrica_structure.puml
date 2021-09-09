@@ -1,0 +1,190 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": ""
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false // root node is included
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "TP1.eje3.Fabrica"
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_3113937 { 
+   	label=eje1
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Cliente198545174[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Cliente</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   dni: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   fechaNacimiento: Date [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nombre: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_3113939 { 
+   	label=eje3
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   BolsaPromocional198545172[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)BolsaPromocional</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   cajaChocolates: ArrayList&lt;CajaChocolate&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   descripcion: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CajaChocolate198545172[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CajaChocolate</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   nombre: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Fabrica198545172[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Fabrica</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   nombre: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   productos: ArrayList&lt;Producto&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   ventas: ArrayList&lt;Venta&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Producto198545172[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Producto</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   precio: double [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Venta198545172[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Venta</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   cliente: Cliente [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   producto: Producto [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Fabrica198545172 -> Producto198545172[label="productos
+[0..*]"];
+Fabrica198545172 -> Venta198545172[label="ventas
+[0..*]"];
+Producto198545172 -> BolsaPromocional198545172[arrowhead=none, arrowtail=empty, dir=both];
+Producto198545172 -> CajaChocolate198545172[arrowhead=none, arrowtail=empty, dir=both];
+Venta198545172 -> Cliente198545174[label="cliente
+[0..1]"];
+Venta198545172 -> Producto198545172[label="producto
+[0..1]"];
+    
+}
+@enduml

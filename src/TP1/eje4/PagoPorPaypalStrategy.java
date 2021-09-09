@@ -19,6 +19,6 @@ public class PagoPorPaypalStrategy implements MetodoDePago{
 
     @Override
     public void pagar(double monto) {
-        System.out.printf("se ha pagado por metodo de paypa del usuario: %s \n", getUsuario());
+        Paypal.cobrar(getUsuario(), monto);
     }
 }

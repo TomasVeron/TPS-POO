@@ -39,16 +39,7 @@ public class Fabrica {
 
 
     public static void main(String[] args) {
-        CajaChocolate p1 = new CajaChocolate(150.0);
-        CajaChocolate p2 = new CajaChocolate(10.0);
-        CajaChocolate p3 = new CajaChocolate(120.0);
 
-        BolsaPromocional bp = new BolsaPromocional("10 cajas de chocolates negros");
-        bp.getCajaChocolates().add(p1);
-        bp.getCajaChocolates().add(p2);
-        bp.getCajaChocolates().add(p3);
-
-        System.out.println(bp.getPrecio());
     }
 
 }

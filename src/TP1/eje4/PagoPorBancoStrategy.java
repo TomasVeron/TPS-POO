@@ -18,6 +18,6 @@ public class PagoPorBancoStrategy implements MetodoDePago{
 
     @Override
     public void pagar(double monto) {
-        System.out.printf("se ha pagado con transferencia Bancaria con cbu: %s \n", getCbuOrigen());
+        Banco.transferir(getCbuOrigen(),monto);
     }
 }
